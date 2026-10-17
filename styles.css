@@ -1522,3 +1522,9 @@ footer p:nth-of-type(2) {
 .profile-accent { font-weight:500; }
 .projects-toolbar { justify-content:center; }
 .filters { justify-content:center; }
+
+.hero-summary .summary-infinity {
+  font-family:Arial,sans-serif;
+  font-size:58px;
+  line-height:.8;
+}

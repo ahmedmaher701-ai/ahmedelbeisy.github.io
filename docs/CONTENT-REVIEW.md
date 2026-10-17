@@ -10,8 +10,8 @@ No employment or outcome claim has been independently verified. Highlight cards 
 | --- | --- |
 | 8+ years | Original summary. Confirm preferred tenure wording against employment history. |
 | 4 countries | Original stat; only Egypt, UAE and Saudi Arabia are named. Preserved in public verification notes, not promoted as a verified statistic. |
-| 20+ tools mastered | Original stat; confirm breadth and proficiency. Preserved in notes; all original tool listings remain. |
-| Infinite problems solved | Original rhetorical stat. Preserved in notes, not presented as a measurable outcome. |
+| 20+ tools mastered | Original stat; confirm breadth and proficiency. Restored to the hero as “20+ Tools Mastered” at the owner’s explicit request; all original tool listings remain. |
+| Infinite problems solved | Original rhetorical stat. Restored to the hero as “∞ Problems Solved” at the owner’s explicit request; this remains rhetorical rather than a measurable outcome. |
 | French | Original summary says fluent; skills say conversational. Skills retain conversational and public notes disclose the conflict. |
 | SAP migration | Verify 12+ months of journal entry data, contribution, scope and permission to disclose. |
 | GIG Gulf | Verify “millions of records,” predictive models and reporting scope. Original statement retained in experience. |
