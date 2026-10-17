@@ -1,0 +1,28 @@
+AHMED EL-BEISY
+Data Analytics & Automation Manager
+Riyadh, Saudi Arabia
+Ahmed.maher701@gmail.com | +966 53 600 1603
+LinkedIn: https://www.linkedin.com/in/ahmedelbeisy/
+
+PROFILE CV — TEXT EDITION
+Compiled from the existing portfolio. Self-reported information requires owner confirmation. No qualifications or new achievements have been added.
+
+SUMMARY
+Data Analytics & AI leader with 8+ years of experience across health insurance, pricing intelligence, ERP consulting and audit analytics in Egypt, UAE and Saudi Arabia. Seeking Senior Manager, Data & AI and senior analytics, automation and transformation leadership opportunities.
+
+EXPERIENCE
+Oct 2025 Present Manager, Audit D&A Riyadh, KSA KPMG Saudi Arabia Architecting audit data strategy for high-stakes engagements. Built AI pipelines with Alteryx and Power Automate. Developed Power Apps and web tools with embedded Power BI. Piloting GenAI and LLM-assisted workflows in audit contexts. Alteryx Power BI GenAI Power Apps
+
+Aug 2024 Oct 2025 Asst. Manager, Audit D&A Riyadh, KSA KPMG Saudi Arabia Analytics solutions for insurance, banking, and corporate finance clients. Led SAP ECC → S/4HANA migration testing across 12+ months of journal entry data. Built three-way automated financial reconciliation frameworks. SAP S/4HANA Python ETL Power BI
+
+Dec 2023 Aug 2024 Senior Business Analyst Dubai, UAE Odoo Full-cycle ERP implementations across all Odoo modules: Finance, CRM, HR, Inventory, Operations. Built automated reporting pipelines. Handled requirements, configuration, user training, and go-live support. Odoo ERP Business Analysis Automation
+
+Sep 2022 Dec 2023 Pricing & Portfolio Sr. Analyst Dubai, UAE GIG Gulf Optimized insurance pricing with AWS Athena and SAS across millions of records. Built predictive models forecasting market trends. Deployed Power BI suites for senior leadership across GCC markets. AWS Athena SAS Predictive Modeling
+
+May 2017 Aug 2022 MIS Officer → MIS Manager Cairo, Egypt GlobeMed Egypt Promoted from officer to manager in 4 years. Built Tableau and QlikView dashboards for real-time health insurance KPI monitoring. Led fraud detection with automated anomaly-detection alert systems. Tableau QlikView SAS Fraud Detection
+
+CAPABILITIES
+01 AI & Automation Alteryx · Power Automate · GenAI · LLM Workflows · Power Apps 02 Data Visualization Power BI · Tableau · QlikView · Executive Dashboards 03 Data Engineering SQL · SAS · AWS Athena & Glue · ETL · Python 04 Predictive Analytics Statistical Modeling · Forecasting · Pricing · Fraud Detection 05 ERP Systems Odoo · SAP ECC · S/4HANA · ERP Migration 06 Web & UX Design Web App Dev · UX Design · SharePoint · Power Apps 07 Audit Analytics KPMG D&A · Financial Reconciliation · JE Testing 08 Leadership Team Building · Stakeholder Comms · Change Management 09 Languages English (Fluent) · Arabic (Fluent) · French (Conversational)
+
+VERIFICATION NOTES
+Confirm employment and dates, reported results and tool proficiency. French is listed as conversational in the skills section and fluent in the original summary; confirm level. Original claims of 4 countries and 20+ tools require evidence; only 3 countries are named. Confirm the 12+ month migration scope, millions of pricing records, promotion in 4 years and current availability. LinkedIn URL inferred from the existing handle.
