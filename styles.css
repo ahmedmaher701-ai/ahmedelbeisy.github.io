@@ -1502,3 +1502,23 @@ footer p:nth-of-type(2) {
   .hero-summary dd { font-size:46px; }
   .hero-summary .summary-text { font-size:30px; }
 }
+
+/* Editorial color hierarchy and centered project navigation. */
+h2 em,
+.hero-statement span,
+.about-grid .intro {
+  color:var(--rust);
+}
+.contact-grid h2 em,
+footer p:nth-of-type(2) {
+  color:var(--orange);
+}
+#about .highlight strong,
+#about .text-link,
+.profile-accent {
+  color:var(--rust);
+}
+#about .highlight strong span { color:var(--muted); }
+.profile-accent { font-weight:500; }
+.projects-toolbar { justify-content:center; }
+.filters { justify-content:center; }
