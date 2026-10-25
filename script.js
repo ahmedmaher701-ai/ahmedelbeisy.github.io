@@ -49,35 +49,56 @@ filters.addEventListener('click', (event) => {
 });
 // Native anchor navigation retains URL fragments and respects CSS reduced motion.
 
-/* Accessible, manually paced demonstrations. No client data is simulated. */
+/* Each exhibit runs once on entry; replay/pause is explicit and independent. */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-document.querySelectorAll('.project-card').forEach((card) => {
-  const toggle = card.querySelector('.demo-toggle');
-  const demo = card.querySelector('.project-demo');
-  const steps = [...demo.querySelectorAll('.demo-flow li')];
-  const next = demo.querySelector('[data-demo-next]');
-  const reset = demo.querySelector('[data-demo-reset]');
-  const status = demo.querySelector('.demo-status');
-  let current = -1;
-  const showStep = (index) => {
-    current = index;
-    steps.forEach((step, i) => {
-      step.classList.toggle('is-active', i === current);
-      step.classList.toggle('is-complete', i < current);
-    });
-    status.textContent = current < 0 ? 'Ready to explore' : current === steps.length - 1 ? 'Workflow complete' : 'Step ' + (current + 1) + ' of ' + steps.length;
-    next.disabled = current === steps.length - 1;
-    next.textContent = current === steps.length - 1 ? 'Complete' : 'Next step';
-  };
-  toggle.addEventListener('click', () => {
-    const open = demo.hidden;
-    demo.hidden = !open;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.firstChild.textContent = open ? 'Hide workflow ' : 'Explore animated workflow ';
-    if (open) showStep(-1);
-  });
-  next.addEventListener('click', () => showStep(Math.min(steps.length - 1, current + 1)));
-  reset.addEventListener('click', () => showStep(-1));
+const sceneControllers = [];
+const messages = {
+ automation: ['Source files received', 'Quality checks complete', 'Request assigned to the team', 'Report ready for review'],
+ analytics: ['Reading opening balances', 'Applying journal movements', 'Comparing closing balances', 'Two account-level exceptions identified'],
+ transformation: ['Finance connected', 'Customer workflows connected', 'People processes connected', 'Inventory connected · ready for adoption']
+};
+document.querySelectorAll('.project-feature').forEach(card => {
+ const stage = card.querySelector('.project-stage');
+ const button = card.querySelector('.scene-play');
+ const status = card.querySelector('[data-scene-status]');
+ let step = -1, timer = null, started = false;
+ const label = text => { button.textContent = text; button.setAttribute('aria-label', `${text}: ${card.dataset.category}`); };
+ const pause = () => { clearTimeout(timer); timer = null; stage.classList.remove('is-playing'); label(step === 3 ? 'Replay animation ↻' : 'Play animation ↗'); };
+ const render = () => {
+  stage.dataset.phase = String(step);
+  stage.querySelectorAll('[data-phase]').forEach(node => node.classList.toggle('is-connected', Number(node.dataset.phase) <= step));
+  status.textContent = messages[card.dataset.category][step];
+ };
+ const tick = () => {
+  step++; render();
+  if (step < 3) timer = setTimeout(tick, 1800); else pause();
+ };
+ const play = () => {
+  if (timer !== null) { pause(); return; }
+  started = true;
+  if (reduceMotion.matches) { step = 3; render(); pause(); return; }
+  if (step === 3) { step = -1; stage.dataset.phase = '-1'; }
+  stage.classList.add('is-playing'); label('Pause animation Ⅱ'); tick();
+ };
+ button.hidden = false;
+ button.addEventListener('click', play);
+ sceneControllers.push({card, pause});
+ if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+   if (entry.isIntersecting && !started && !reduceMotion.matches) play();
+   else if (!entry.isIntersecting) pause();
+  }), {threshold: .35}); observer.observe(stage);
+ }
+ reduceMotion.addEventListener('change', () => { pause(); if (reduceMotion.matches) { step = 3; render(); } });
+});
+document.addEventListener('visibilitychange', () => { if(document.hidden) sceneControllers.forEach(scene => scene.pause()); });
+filters.addEventListener('click', () => sceneControllers.forEach(scene => { if(scene.card.hidden) scene.pause(); }));
+const dashboard = document.querySelector('.dashboard');
+dashboard.querySelector('.dashboard-filter').addEventListener('click', event => {
+ const button = event.target.closest('[data-rows]'); if(!button) return;
+ dashboard.querySelectorAll('[data-rows]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+ dashboard.querySelectorAll('tbody tr').forEach(row => { row.hidden = button.dataset.rows === 'exceptions' && !row.hasAttribute('data-exception'); });
+ dashboard.querySelector('.dashboard-status').textContent = button.dataset.rows === 'exceptions' ? 'Showing 2 exceptions' : 'Showing all 6 accounts';
 });
 /* IntersectionObserver never conceals meaningful content when unsupported. */
 if ('IntersectionObserver' in window && !reduceMotion.matches) {
