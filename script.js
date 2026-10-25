@@ -48,3 +48,53 @@ filters.addEventListener('click', (event) => {
   document.querySelector('#project-count').textContent = `${count} project${count === 1 ? '' : 's'}`;
 });
 // Native anchor navigation retains URL fragments and respects CSS reduced motion.
+
+/* Accessible, manually paced demonstrations. No client data is simulated. */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll('.project-card').forEach((card) => {
+  const toggle = card.querySelector('.demo-toggle');
+  const demo = card.querySelector('.project-demo');
+  const steps = [...demo.querySelectorAll('.demo-flow li')];
+  const next = demo.querySelector('[data-demo-next]');
+  const reset = demo.querySelector('[data-demo-reset]');
+  const status = demo.querySelector('.demo-status');
+  let current = -1;
+  const showStep = (index) => {
+    current = index;
+    steps.forEach((step, i) => {
+      step.classList.toggle('is-active', i === current);
+      step.classList.toggle('is-complete', i < current);
+    });
+    status.textContent = current < 0 ? 'Ready to explore' : current === steps.length - 1 ? 'Workflow complete' : 'Step ' + (current + 1) + ' of ' + steps.length;
+    next.disabled = current === steps.length - 1;
+    next.textContent = current === steps.length - 1 ? 'Complete' : 'Next step';
+  };
+  toggle.addEventListener('click', () => {
+    const open = demo.hidden;
+    demo.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.firstChild.textContent = open ? 'Hide workflow ' : 'Explore animated workflow ';
+    if (open) showStep(-1);
+  });
+  next.addEventListener('click', () => showStep(Math.min(steps.length - 1, current + 1)));
+  reset.addEventListener('click', () => showStep(-1));
+});
+/* IntersectionObserver never conceals meaningful content when unsupported. */
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const targets = [...document.querySelectorAll('.project-card, .section-heading, .hero-summary')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('motion-pending');
+      entry.target.classList.add('motion-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+  targets.forEach(target => {
+    target.classList.add('motion-reveal');
+    if (target.getBoundingClientRect().top > window.innerHeight) {
+      target.classList.add('motion-pending');
+      observer.observe(target);
+    } else target.classList.add('motion-visible');
+  });
+}
